@@ -1,0 +1,132 @@
+<div>
+<section class="about-us" id="about">
+	<div class="wrapper">
+		<h1>[  About Us  ]</h1>
+		<p>Lorem ipsum dolor sit amet, cosectetur adpicing edit, sed do eiusmod tempor incididunt ut labore et dolare magna aliqua. Ut enim ad minim vebiam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ae commodo consequat. Duis aute ieure dolor in reprehenderit in colutate velit esse cillum dolore eu figiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, aunt in culpa qui officia deserunt mollit anin id est laborum. Sed un perspiciatis unde omnis te natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam , eaque ipsa quae ab illo inventore  veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione volptatem sequi nasciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur,adipisci velit,sad quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+  		</p>
+	</div>
+</section>
+<section class="web-app">
+	<div class="wrapper">
+	</div>
+	<div class="overflow-title">
+		<h1>[  eBook Web Application   ]</h1>
+	</div>
+</section>
+<section class="mechanotherapy" id="mechanotherapy">
+	<div class="wrapper">
+		<h1>[  Mechanotherapy in Orthodontics Series  ]</h1>
+		<p>CTOR Pressis proud to present innovative and comprehensive orthodontic book quides studants and clinicians from basic bomechanics principles into advanced mechanotheraty concepts including the latest advances in tooth movement and cranioficial qrowth. </p>
+	</div>
+</section>
+<section class="membership">
+	<div class="wrapper">
+		<h1>[  Membership  ]</h1>
+		<p class="add">add some text more </p>
+		<div class="add-text">
+			<div class="add-wrap">
+				<div class="left-block">
+					<div class="under"></div>
+					<div class="above"></div>
+				</div>
+				<div class="center" ><i class="fa fa-plus" aria-hidden="true"></i></div>
+				<div class="right-block">
+				</div>
+			</div>
+		</div>
+		<button class="start">Start free 30Days</button>
+	</div>
+</section>
+<section class="recommended">
+	<div class="wrapper">
+		<h1>[  Recommended Reading  ]</h1>
+		<div class="block-list">
+			<div class="jcarousel-book">
+				<div uib-carousel active="active" interval="$ctrl.myInterval" no-wrap="$ctrl.noWrapSlides">
+		      <div uib-slide ng-repeat="recommend in $ctrl.recommended" index="$index">
+		        <img height="200px" ng-src="{{recommend.image}}" style="margin:auto;">
+		        <div class="carousel-caption">
+		          <p>{{recommend.title}}</p>
+		        </div>
+		      </div>
+		    </div>
+			</div>
+		</div>
+	</div>
+</section>
+<section class="news" id="news">
+	<div class="wrapper">
+		<h1>[  Press News  ]</h1>
+		<div class="block-news">
+			<img src="assets/images/news.jpg" alt="">
+			<p class="text-news">Lorem ispsum dolor sit amet, consectetur adipiscind elit, sed do   eiusmod tempor incididunt ut labore et dolore manga aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut prespiciatis unde omnis iste natus error sit voluptatem</p>
+		</div>
+		<span ng-click="$ctrl.open()" class="btn btn-primary">subscribe to our newsletter</span>
+	</div>
+</section>
+<section class="contact" id="contact">
+	<div class="map">
+		<h1>Map</h1>
+		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8506241742175!2d85.35516331465656!3d27.7218979827859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bd88a7dce63%3A0x2f767a36da816bb5!2sHyatt+Regency+Kathmandu!5e0!3m2!1sen!2snp!4v1474019886608" class="gmap" frameborder="0" style="border:0" allowfullscreen></iframe>
+	</div>
+	<div class="contact-us">
+		<div class="wrapper">
+			<h1>[  Contact Us  ]</h1>
+
+			<div class="row">
+				<div class="col-md-6 col-sm-6">
+					<form name="contactForm" novalidate="" ng-submit="$ctrl.contact(contactForm)" novalidate="">
+						<fieldset ng-disabled="$ctrl.contactFormSubmitted">
+						<div class="form-group" ng-if="$ctrl.contactFormMessage">
+							Succesfully sent
+						</div>
+						<div class="form-group">
+							<input name="name" ng-model="$ctrl.contactObject.name" required="" type="text" class="form-control" placeholder="Full Name">
+							<span class="text-warning" ng-messages="contactForm.name.$error" ng-if="contactForm.$submitted">
+								<p ng-message="required">Enter Name</p>
+							</span>
+						</div>
+						<div class="form-group">
+							<input type="number" ng-model="$ctrl.contactObject.phone" name="phone" class="form-control" placeholder="Phone Number" required>
+							<span class="text-warning" ng-messages="contactForm.phone.$error" ng-if="contactForm.$submitted">
+								<p ng-message="required">Enter Phone</p>
+							</span>
+						</div>
+						<div class="form-group">
+							<input name="subject" type="text" ng-model="$ctrl.contactObject.subject" class="form-control" placeholder="Subject" required="">
+							<span class="text-warning" ng-messages="contactForm.subject.$error" ng-if="contactForm.$submitted">
+								<p ng-message="required">Enter Subject</p>
+							</span>
+						</div>
+						<div class="form-group">
+							<textarea name="text" required="" ng-model="$ctrl.contactObject.text" class="form-control" rows='4' placeholder="Describe yourself here..." required="">
+
+							</textarea>
+							<span class="text-warning" ng-messages="contactForm.text.$error" ng-if="contactForm.$submitted">
+								<p ng-message="required">Enter Description</p>
+							</span>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn btn-submit">Submit</button>
+						</div>
+						</fieldset>
+					</form>
+				</div>
+				<div class="col-md-6 col-sm-6">
+					<fieldset>
+						<h3>Address</h3>
+						<ul>
+							<li>7901 North Cedar Swamp </li>
+							<li>Street</li>
+							<li>Ozone Park, NY 11417</li>
+						</ul>
+
+
+					</fieldset>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+</div>

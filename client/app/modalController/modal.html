@@ -1,0 +1,47 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">Newsletter Subscription</h3>
+</div>
+<div class="modal-body" id="modal-body">
+  <div class="row">
+    <div class="col-md-offset-3 col-md-5">
+      <form id="subscriptionForm" name="subscriptionForm" novalidate="" ng-submit="$ctrl.submit(subscriptionForm, $ctrl.formObject)">
+        <fieldset ng-disabled="$ctrl.submitted">
+          <div class="form-group" ng-if="$ctrl.message">
+            <h4 class="text-success">Successfully subscribed</h4>
+          </div>
+          <div class="form-group">
+            <label>Name:</label>
+            <input mongoose-error name="name" ng-model="$ctrl.formObject.name" type="" class="form-group-lg form-control" name="" required="">
+            <span class="text-warning" ng-messages="subscriptionForm.name.$error" ng-if="subscriptionForm.$submitted">
+              <h5 ng-message='required'>Enter your name</h5>
+              <h5 ng-message='mongoose'>{{$ctrl.errors.name.message}}</h5>
+            </span>
+          </div>
+          <div class="form-group">
+            <label>Email:</label>
+            <input mongoose-error ng-model="$ctrl.formObject.email" name="email" type="" class="form-group-lg form-control" name="" required="">
+            <span class="text-warning" ng-messages="subscriptionForm.email.$error" ng-if="subscriptionForm.$submitted">
+              <h5 ng-message='required'>Enter your email</h5>
+              <h5 ng-message='mongoose'>{{$ctrl.errors.email.message}}</h5>
+            </span>
+          </div>
+          <div class="form-group">
+            <label>Address:</label>
+            <input mongoose-error ng-model="$ctrl.formObject.address" name="address" type="" class="form-group-lg form-control" name="" required="">
+            <span class="text-warning" ng-messages="subscriptionForm.address.$error" ng-if="subscriptionForm.$submitted">
+              <h5 ng-message='required'>Enter your address</h5>
+              <h5 ng-message='mongoose'>{{$ctrl.errors.address.message}}</h5>
+
+            </span>
+          </div>
+          <div class="form-group">
+            <button class="btn btn-success" type="submit">Subscribe</button>
+          </div>
+        </fieldset>
+      </form>   
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+</div>
