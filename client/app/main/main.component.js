@@ -34,7 +34,7 @@ export class MainController {
   }
   open(){
     var modalInstance = this.uibModal.open({
-      templateUrl: 'app/modalController/modal.html',
+      templateUrl: 'myModalContent.html',
       controller: 'ModalControllerController',
       controllerAs: '$ctrl',
       size: 'lg'
