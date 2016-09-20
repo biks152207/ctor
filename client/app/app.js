@@ -31,12 +31,15 @@ import constants from './app.constants';
 import util from '../components/util/util.module';
 import modalInstance from './modalController/modalController.controller';
 import mongooseError from '../components/mongoose/mongooseError/mongooseError.directive';
+import forget from './forget/forget.component';
+import reset from './reset/reset.component';
+import adminPanel from './admin-panel/admin-panel.component';
 
 
 import './app.scss';
 
 angular.module('scApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth, account,
-    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, 'ui-notification'
+    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, forget, reset, adminPanel, 'ui-notification', require('angular-validation-match')
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {

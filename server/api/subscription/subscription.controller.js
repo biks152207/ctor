@@ -21,7 +21,6 @@ const messageTemplate = {
 }
 
 function respondWithResult(res, statusCode) {
-  console.log('test');
   statusCode = statusCode || 200;
   return function(entity) {
     if(entity) {
@@ -65,6 +64,8 @@ function handleEntityNotFound(res) {
 }
 
 function handleError(res, statusCode) {
+  console.log('from error');
+  console.log(statusCode);
   statusCode = statusCode || 500;
   return function(err) {
     res.status(statusCode).send(err);
@@ -90,10 +91,15 @@ export function show(req, res) {
 export function create(req, res) {
   return Subscription.create(req.body)
     .then(() =>{
+      console.log('here are are in the email sending process');
       sendMail(_.merge(messageTemplate, {email: req.body.email}))
-        .then(respondWithResult(res, 201))
+        .then(
+          (result) =>{
+            res.json({message:'Successful'})
+          }
+        )
     })
-    .catch(handleError(res));
+    // .catch(handleError(res));
 }
 
 // Upserts the given Subscription in the DB at the specified ID

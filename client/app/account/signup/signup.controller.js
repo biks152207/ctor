@@ -5,11 +5,24 @@ import angular from 'angular';
 export default class SignupController {
 
   /*@ngInject*/
-  constructor(Auth, $state) {
+  constructor(Auth, $state, $uibModalInstance, $uibModal) {
     this.Auth = Auth;
+    this.uibModal = $uibModal;
     this.$state = $state;
+    this.uibModalInstance = $uibModalInstance
   }
-
+  closeModal(){
+    this.uibModalInstance.dismiss();
+  }
+  openLogin(){
+    this.uibModalInstance.dismiss();
+    var modalInstance = this.uibModal.open({
+      templateUrl: 'app/account/login/login.html',
+      controller: 'LoginController',
+      controllerAs: 'vm',
+      size: 'md'
+    });
+  }
   register(form) {
     this.submitted = true;
 
@@ -19,9 +32,11 @@ export default class SignupController {
         email: this.user.email,
         password: this.user.password
       })
-        .then(() => {
+        .then((result) => {
+          console.log(result);
           // Account created, redirect to home
-          this.$state.go('main');
+          this.uibModalInstance.dismiss();
+          // this.$state.go('main');
         })
         .catch(err => {
           err = err.data;

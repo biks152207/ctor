@@ -7,7 +7,8 @@ import mongoose, {Schema} from 'mongoose';
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
-  name: String,
+  firstName: String,
+  lastName: String,
   email: {
     type: String,
     lowercase: true,
@@ -38,7 +39,9 @@ var UserSchema = new Schema({
   facebook: {},
   twitter: {},
   google: {},
-  github: {}
+  github: {},
+  resetPasswordToken: String,
+  resetPasswordExpires: Date
 });
 
 /**
@@ -230,16 +233,17 @@ UserSchema.methods = {
       }
     }
 
-    var defaultIterations = 10000;
-    var defaultKeyLength = 64;
+    var defaultIterations = 12000;
+    var defaultKeyLength = 512;
+    var digestAlgorithm = 'sha256';
     var salt = new Buffer(this.salt, 'base64');
 
     if(!callback) {
-      return crypto.pbkdf2Sync(password, salt, defaultIterations, defaultKeyLength)
+      return crypto.createHmac(password, salt, defaultIterations, defaultKeyLength, digestAlgorithm)
         .toString('base64');
     }
 
-    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, (err, key) => {
+    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength,digestAlgorithm, (err, key) => {
       if(err) {
         return callback(err);
       } else {

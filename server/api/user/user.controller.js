@@ -3,8 +3,17 @@
 import User from './user.model';
 import config from '../../config/environment';
 import jwt from 'jsonwebtoken';
+import { generateToken } from '../../utilities/utility';
+import {sendMail} from '../../utilities/mailer';
+import _ from 'lodash';
+
+const resetTemplate = {
+  subject: 'Password Reset',
+  text: 'You have subscribed newsletters'
+}
 
 function validationError(res, statusCode) {
+  console.log('from error');
   statusCode = statusCode || 422;
   return function(err) {
     return res.status(statusCode).json(err);
@@ -98,6 +107,40 @@ export function changePassword(req, res) {
     });
 }
 
+export function forget(req, res){
+  var email = req.body.email;
+  if (email){
+    return User.findOne({email: email}).select('-password').exec()
+      .then(user =>{
+        if(!user) {
+          return res.status(404).json({message: 'We dont find the user with this email, Please try again with new email.'});
+        }
+        generateToken().then((token) => {
+          user.resetPasswordToken = token;
+          user.resetPasswordExpires = Date.now() + 3600000;
+          user.save()
+            .then(() => {
+              resetTemplate.text =  `You are receiving this because you (or someone else) have requested the reset of the password for your account.\n\n
+                    Please click on the following link, or paste this into your browser to complete the process:\n\n
+                    http://${req.headers.host}/reset/${token}\n\n
+                    If you did not request this, please ignore this email and your password will remain unchanged.\n`;
+              sendMail(_.merge(resetTemplate, {email: email}))
+                .then(
+                  (result) =>{
+                    res.json({message:'We have sent you an email, Please check your email for registration.'})
+                  }
+                )
+            })
+            .catch((err) => {
+              console.log(err);
+            })
+        })
+      })
+  }else{
+    return res.status(403).json({message: 'Enter your email address'})
+  }
+}
+
 /**
  * Get my info
  */
@@ -106,6 +149,7 @@ export function me(req, res, next) {
 
   return User.findOne({ _id: userId }, '-salt -password').exec()
     .then(user => { // don't ever give out the password or salt
+      console.log(user);
       if(!user) {
         return res.status(401).end();
       }
@@ -113,6 +157,45 @@ export function me(req, res, next) {
     })
     .catch(err => next(err));
 }
+
+export function checkToken(req, res, next){
+  if (req.params.token){
+    return User.findOne({resetPasswordToken: req.params.token, resetPasswordExpires: { $gt: Date.now() }}).exec()
+      .then(user =>{
+        if (!user){
+          return res.status(404).json({message: 'Password reset token is invalid or has expired'});
+        }else{
+          return res.json({message: 'success'});
+        }
+      })
+  }else{
+    return res.state(404).end();
+  }
+}
+
+export function changepassword(req, res, next){
+  console.log(req.body);
+  if (req.body.token && req.body.password){
+    return User.findOne({resetPasswordToken: req.body.token, resetPasswordExpires: { $gt: Date.now() }}).exec()
+      .then(user =>{
+        if (!user){
+          return res.status(404).json({message: 'Password reset token is invalid or has expired'});
+        }else{
+          console.log(user);
+          user.password = req.body.password;
+          user.resetPasswordToken = ' ';
+          return user.save()
+            .then(() => {
+              res.status(200).json({message: 'Password successfully changed, Please login'});
+            })
+            // .catch(validationError(res));
+        }
+      })
+  }else{
+    return res.status(404).json({message: 'Missing arguments'})
+  }
+}
+
 
 /**
  * Authentication callback

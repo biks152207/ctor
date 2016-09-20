@@ -1,0 +1,33 @@
+<div class="registration-block1 forgetClass">
+	<div class="log-data">
+    <span class="text-success" ng-if="vm.message">
+      <h3>{{vm.message}}</h3>
+    </span>
+		<form class="data" novalidate="" name="forgetForm" ng-submit="vm.submit(forgetForm, vm.formData)">
+			<h1>Foget your password</h1>
+			<span class="text-data">Enter your email or phone and will send a mail to reset your password.</span>
+			<div class="email">
+        <span><b></b>your email</span>
+        <input name="email" type="email" ng-model="vm.formData.email" required="">
+        <span class="text-warning" ng-messages="forgetForm.email.$error" ng-if="forgetForm.$submitted">
+          <h6 ng-message="required">
+            Enter your email
+          </h6>
+        </span>
+      </div>
+			<div class="phone">
+        <span><b></b>your phone</span>
+        <input name="phone" type="text"  ng-model="vm.formData.phone" required="">
+        <span class="text-warning" ng-messages="forgetForm.phone.$error" ng-if="forgetForm.$submitted">
+          <h6 ng-message="required">
+            Enter phone
+          </h6>
+        </span>
+      </div>
+      <span>
+        <input type="submit" value="Submit" class="sub-data">
+        <i ng-if="vm.submitted" class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+      </span>
+		</form>
+	</div>
+</div>

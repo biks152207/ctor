@@ -19,10 +19,11 @@ module.exports = {
     uri: process.env.MONGODB_URI
       || process.env.MONGOHQ_URL
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
-      || 'mongodb://localhost/sc'
+      || 'mongodb://bikram:bikram@jello.modulusmongo.net:27017/bA9dibup'
   },
   mailer:{
-    user: 'bsntbiks12@gmail.com',
-    password: 'beatles12'
+    user: 'biks152207',
+    password: 'beatles12',
+    adminEmail: 'bikrambasnet1@gmail.com'
   }
 };

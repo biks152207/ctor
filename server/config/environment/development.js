@@ -10,11 +10,10 @@ module.exports = {
     uri: 'mongodb://localhost/sc-dev'
   },
   mailer:{
-    user: 'bsntbiks12@gmail.com',
-    password: 'beatles12'
+    user: 'biks152207',
+    password: 'beatles12',
+    adminEmail: 'bikrambasnet1@gmail.com'
   },
-
-  // Seed database on startup
   seedDB: true
 
 };

@@ -19,9 +19,13 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 
 // Component styles are injected through gulp
 /* inject:scss */
+@import 'admin-panel/admin-panel';
 @import 'admin/admin';
+@import 'forget/forget';
+@import 'loginroutes/loginroutes';
 @import 'main/main';
 @import 'mymodal/mymodal';
+@import 'reset/reset';
 @import '../components/footer/footer';
 @import '../components/modal/modal';
 @import '../components/oauth-buttons/oauth-buttons';
@@ -67,6 +71,14 @@ p {
 .top-main {
 	width: 100%;
 	min-height: 800px;
+	background: url(/assets/images/top-background.jpg) no-repeat;
+	background-size: cover;
+	overflow: hidden;
+	position: relative;
+}
+.top-main1 {
+	width: 100%;
+	min-height: 50px;
 	background: url(/assets/images/top-background.jpg) no-repeat;
 	background-size: cover;
 	overflow: hidden;
@@ -593,4 +605,211 @@ div.rn-carousel-indicator span {
       content: ">";
     }
   }
+}
+.loginContainer {
+	margin: 0;
+	padding: 0;
+	background: url(/assets/images/grey-background.jpg);
+	font-family: 'Montserrat-Light';
+	overflow: hidden;
+  width: 100%;
+}
+.registration-block {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+	margin-top: 100px;
+	padding: 40px 0;
+}
+.registration-block:before {
+	content: '';
+	width: 2px;
+	background: #fff;
+	height: 100%;
+	top: 0;
+	left: 50%;
+	margin-left: -1px;
+	display: block;
+	position: absolute;
+}
+.registration-block .log-in,
+.registration-block .acount {
+	width: 50%;
+	float: left;
+	text-align: center;
+}
+.registration-block .log-in {
+	margin-top: 71px;
+}
+.registration-block .log-in form,
+.registration-block .acount form {
+	max-width: 425px;
+	width: 100%;
+	margin: 0 auto;
+}
+.registration-block .log-in form h1,
+.registration-block .acount form h1 {
+	text-align: left;
+	font-size: 42px;
+	color: #fff;
+	font-weight: 300;
+	font-family: 'Montserrat-Light';
+	margin-top: 0;
+}
+.registration-block .log-in form input,
+.registration-block .acount form input {
+	width: 100%;
+	background: #8e8b8b;
+	border: 2px solid #fff;
+	height: 55px;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+	color: #fff;
+	outline: none;
+	font-size: 22px;
+    font-weight: 300;
+    box-sizing: border-box;
+    padding: 0 15px;
+    font-family: 'Montserrat-Light';
+    cursor: pointer;
+}
+::-webkit-input-placeholder {color:#fff;}
+::-moz-placeholder          {color:#fff;}
+:-moz-placeholder           {color:#fff;}
+:-ms-input-placeholder		{color:#fff;}
+.registration-block .log-in form .email,
+.registration-block .log-in form .password {
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.registration-block .log-in form .email img {
+	position: absolute;
+    width: 34px;
+    top: 15px;
+    left: 17px;
+}
+.registration-block .log-in form .password img {
+	position: absolute;
+    width: 26px;
+    top: 9px;
+    left: 20px;
+}
+.registration-block .log-in form .email input,
+.registration-block .log-in form .password input {
+	padding-left: 60px;
+}
+
+.registration-block .log-in form input.sub-log,
+.registration-block .acount form input.sub-reg {
+	background: #292b2c;
+	border: none;
+	margin-bottom: 0;
+	margin-top: 20px;
+	font-size: 33px;
+}
+.registration-block .log-in form input.sub-log:hover,
+.registration-block .acount form input.sub-reg:hover {
+	background: #3c3f40;
+}
+
+.registration-block .log-in form input.sub-log {
+	margin-bottom: 3px;
+}
+.registration-block .log-in form span {
+	color: #fff;
+	font-family: 'Montserrat-Light';
+	font-size: 17px;
+}
+.registration-block:after,
+.registration-block .log-in:after,
+.registration-block .acount:after {
+	color: '';
+	display: block;
+	clear: both;
+}
+/**
+ * angular-ui-notification - Angular.js service providing simple notifications using Bootstrap 3 styles with css transitions for animating
+ * @author Alex_Crack
+ * @version v0.2.0
+ * @link https://github.com/alexcrack/angular-ui-notification
+ * @license MIT
+ */
+.ui-notification
+{
+    position: fixed;
+    z-index: 9999;
+
+    width: 300px;
+
+    -webkit-transition: all ease .5s;
+         -o-transition: all ease .5s;
+            transition: all ease .5s;
+
+    color: #fff;
+    border-radius: 0;
+    background: #337ab7;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, .3);
+}
+.ui-notification.clickable
+{
+    cursor: pointer;
+}
+.ui-notification.clickable:hover
+{
+    opacity: .7;
+}
+.ui-notification.killed
+{
+    -webkit-transition: opacity ease 1s;
+         -o-transition: opacity ease 1s;
+            transition: opacity ease 1s;
+
+    opacity: 0;
+}
+.ui-notification > h3
+{
+    font-size: 14px;
+    font-weight: bold;
+
+    display: block;
+
+    margin: 10px 10px 0 10px;
+    padding: 0 0 5px 0;
+
+    text-align: left;
+
+    border-bottom: 1px solid rgba(255, 255, 255, .3);
+}
+.ui-notification a
+{
+    color: #fff;
+}
+.ui-notification a:hover
+{
+    text-decoration: underline;
+}
+.ui-notification > .message
+{
+    margin: 10px 10px 10px 10px;
+}
+.ui-notification.warning
+{
+    color: #fff;
+    background: #f0ad4e;
+}
+.ui-notification.error
+{
+    color: #fff;
+    background: #d9534f;
+}
+.ui-notification.success
+{
+    color: #fff;
+    background: #5cb85c;
+}
+.ui-notification.info
+{
+    color: #fff;
+    background: #5bc0de;
 }

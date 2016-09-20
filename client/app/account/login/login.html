@@ -1,53 +1,78 @@
-<div class="container">
+<div class="container loginContainer">
   <div class="row">
-    <div class="col-sm-12">
-      <h1>Login</h1>
-      <p>Accounts are reset on server restart from <code>server/config/seed.js</code>. Default account is <code>test@example.com</code> / <code>test</code></p>
-      <p>Admin account is <code>admin@example.com</code> / <code>admin</code></p>
-    </div>
-    <div class="col-sm-12">
-      <form class="form" name="form" ng-submit="vm.login(form)" novalidate>
+    <div class="col-md-12">
+      <div class="text-center" ng-if="vm.isLoggedIn()" style="min-height:300px">
+        <h4>Logged in</h4>
+      </div>
+      <div class="registration-block" ng-if="!vm.isLoggedIn()">
+      	<div class="log-in">
+      		<form class="log" name="form" ng-submit="vm.login(form)" novalidate>
+      			<h1>Log in to our site</h1>
+      			<div class="email"><img src="assets/images/mail.png" alt=""><input type="email" name="email" placeholder="email" ng-model="vm.user.email" required></div>
+      			<div class="password"><img src="assets/images/password.png" alt=""><input type="password" name="password" class="form-control" ng-model="vm.user.password" required></div>
+            <div class="form-group">
+              <p class="help-block text-danger" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
+                 Please enter your email and password.
+              </p>
+              <p class="help-block text-danger" ng-show="form.email.$error.email && vm.submitted">
+                 Please enter a valid email.
+              </p>
 
-        <div class="form-group">
-          <label>Email</label>
-
-          <input type="email" name="email" class="form-control" ng-model="vm.user.email" required>
-        </div>
-
-        <div class="form-group">
-          <label>Password</label>
-
-          <input type="password" name="password" class="form-control" ng-model="vm.user.password" required>
-        </div>
-
-        <div class="form-group has-error">
-          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && vm.submitted">
-             Please enter your email and password.
-          </p>
-          <p class="help-block" ng-show="form.email.$error.email && vm.submitted">
-             Please enter a valid email.
-          </p>
-
-          <p class="help-block">{{ vm.errors.login }}</p>
-        </div>
-
-        <div>
-          <button class="btn btn-inverse btn-lg btn-login" type="submit">
-            Login
-          </button>
-          <a class="btn btn-default btn-lg btn-register" ui-sref="signup">
-            Register
-          </a>
-        </div>
-
-        <hr/>
-        <div class="row">
-          <div class="col-sm-4 col-md-3">
-            <oauth-buttons classes="btn-block"></oauth-buttons>
-          </div>
-        </div>
-      </form>
+              <p class="help-block">{{ vm.errors.login }}</p>
+            </div>
+      			<input type="submit" value="Log in" class="sub-log">
+      			<span><a ui-sref="forget">forget password</a></span>
+      		</form>
+      	</div>
+        <div class="acount">
+      		<form  class="form" name="create" ng-submit="vm.register(create, vm.user1)" novalidate="">
+      			<h1>Create Your Acount</h1>
+      			<input placeholder="First Name"  type="text" name="firstName" class="form-control" ng-model="vm.user1.firstName"
+                 required mongoose-error>
+                 <p class="help-block" ng-show="create.firstName.$error.required && vm.submitted1">
+                    First name is required
+                  </p>
+                  <p class="help-block" ng-show="create.firstName.$error.mongoose">
+                    {{ vm.errors.firstName }}
+                  </p>
+      			<input placeholder="Last Name" type="text" required name="lastName" class="form-control" ng-model="vm.user1.lastName" placeholder="Last name" mongoose-error>
+            <p class="help-block" ng-show="create.lastName.$error.required && vm.submitted1">
+               Last name is required
+             </p>
+             <p class="help-block" ng-show="create.lastName.$error.mongoose">
+               {{ vm.errors.lastName }}
+             </p>
+      			<input type="email" ng-model="vm.user1.email" name="email" required placeholder="Email" mongoose-error>
+            <p class="help-block" ng-show="create.email.$error.email && vm.submitted1">
+               Doesn't look like a valid email.
+             </p>
+             <p class="help-block" ng-show="create.email.$error.required && vm.submitted1">
+               What's your email address?
+             </p>
+             <p class="help-block" ng-show="create.email.$error.mongoose">
+               {{ vm.errors1.email }}
+             </p>
+      			<input type="password" placeholder="Password" name="password" class="form-control" ng-model="vm.user1.password"
+                 ng-minlength="3"
+                 required
+                 mongoose-error>
+                 <p class="help-block"
+                    ng-show="(create.password.$error.minlength || create.password.$error.required) && vm.submitted1">
+                   Password must be at least 3 characters.
+                 </p>
+                 <p class="help-block" ng-show="create.password.$error.mongoose">
+                   {{ vm.errors.password }}
+                 </p>
+      			<input  placeholder="Confirm password" type="password" name="confirmPassword" class="form-control" ng-model="vm.user1.confirmPassword"
+                 match="vm.user1.password"
+                 ng-minlength="3" required>
+                 <p class="help-block"
+                      ng-show="create.confirmPassword.$error.match && vm.submitted1">
+                     Passwords must match.
+                   </p>
+      			<input type="submit" value="Register" class="sub-reg">
+      		</form>
+      	</div>
     </div>
   </div>
-  <hr>
 </div>

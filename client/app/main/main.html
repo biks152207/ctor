@@ -41,7 +41,7 @@
             <button class="btn btn-success" type="submit">Subscribe</button>
           </div>
         </fieldset>
-      </form>   
+      </form>
     </div>
   </div>
 </div>
@@ -50,6 +50,7 @@
 </div>
 </div>
 </script>
+
 <section class="about-us" id="about">
 	<div class="wrapper">
 		<h1>[  About Us  ]</h1>
@@ -97,7 +98,7 @@
 		      <div uib-slide ng-repeat="recommend in $ctrl.recommended" index="$index">
 		        <img height="200px" ng-src="{{recommend.image}}" style="margin:auto;">
 		        <div class="carousel-caption">
-		          <p>{{recommend.title}}</p>
+		          <!-- <p>{{recommend.title}}</p> -->
 		        </div>
 		      </div>
 		    </div>
@@ -116,9 +117,10 @@
 	</div>
 </section>
 <section class="contact" id="contact">
-	<div class="map">
+	<div class="map" style="min-height:434px">
 		<h1>Map</h1>
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.8506241742175!2d85.35516331465656!3d27.7218979827859!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb1bd88a7dce63%3A0x2f767a36da816bb5!2sHyatt+Regency+Kathmandu!5e0!3m2!1sen!2snp!4v1474019886608" class="gmap" frameborder="0" style="border:0" allowfullscreen></iframe>
+		<iframe width="420" height="300" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCXA9WS30T3eEpTOU0uZ8-_ru9dgMaUdBM&q=New + york" allowfullscreen>
+</iframe>
 	</div>
 	<div class="contact-us">
 		<div class="wrapper">
@@ -180,5 +182,4 @@
 		</div>
 	</div>
 </section>
-<footers></footers>
 </div>

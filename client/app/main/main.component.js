@@ -40,6 +40,7 @@ export class MainController {
       size: 'lg'
     });
   }
+
   contact(form){
     if (form.$valid){
       this.contactFormSubmitted = true;

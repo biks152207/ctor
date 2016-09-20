@@ -1,0 +1,33 @@
+<div class="container" style=" padding: 150px;position: fixed; -webkit-font-smoothing: antialiased;font: normal 14px Roboto,arial,sans-serif;">
+    <div class="row">
+        <div class="col-md-offset-5 col-md-3">
+          <form name="adminForm" novalidate="" ng-submit="vm.submit(adminForm)">
+            <div class="form-login">
+            <h4>Admin login</h4>
+            <input type="email" id="userName" name="email" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.formData.email" required="" />
+            <span class="text-danger" ng-messages="adminForm.email.$error" ng-if="adminForm.$submitted">
+              <h6 ng-message="required">
+                Enter your email
+              </h6>
+              <h6 ng-message="email">
+                Invalid email
+              </h6>
+            </span>
+            </br>
+            <input type="password" name="password" id="userPassword" class="form-control input-sm chat-input" placeholder="password" ng-model="vm.formData.password" required=""  />
+            <span class="text-danger" ng-messages="adminForm.password.$error" ng-if="adminForm.$submitted">
+              <h6 ng-message="required">
+                Enter your password
+              </h6>
+            </span>
+            </br>
+            <div class="wrapper">
+            <span class="group-btn">
+                <button type="submit" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+            </span>
+            </div>
+            </div>
+          </form>
+        </div>
+    </div>
+</div>
