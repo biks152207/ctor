@@ -21,7 +21,6 @@ export class ResetComponent {
       this.HTTP.post('/api/users/changepassword', formData)
         .then(
           (result) => {
-            console.log(result);
             this.message = result.data.message;
             this.submitted = false;
             this.timeout(() =>{
@@ -30,7 +29,6 @@ export class ResetComponent {
           }
         )
         .catch((error) =>{
-          console.log(error);
           this.message = error.data.message;
           this.submitted = false;
           this.timeout(() =>{

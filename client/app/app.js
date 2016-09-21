@@ -8,6 +8,7 @@ import ngSanitize from 'angular-sanitize';
 import $ from 'jquery';
 import ngTouch from 'angular-touch';
 import 'angular-ui-notification';
+// import 'ng-file-upload';
 
 
 
@@ -34,12 +35,18 @@ import mongooseError from '../components/mongoose/mongooseError/mongooseError.di
 import forget from './forget/forget.component';
 import reset from './reset/reset.component';
 import adminPanel from './admin-panel/admin-panel.component';
+import dashboard from './dashboard/dashboard.component';
+import localStorage from 'angular-local-storage';
+import authenticate from './authenticity/authenticity.service';
+import sideNav from './components/sideNav/sideNav.directive';
+import thumbnail from './angular-thumbnail/angular-thumbnail.directive';
+
 
 
 import './app.scss';
 
 angular.module('scApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth, account,
-    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, forget, reset, adminPanel, 'ui-notification', require('angular-validation-match')
+    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, forget, reset, adminPanel,dashboard, authenticate, localStorage, thumbnail, sideNav,require('ng-file-upload'), 'ui-notification', require('angular-validation-match')
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
@@ -53,6 +60,9 @@ angular.module('scApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstra
         }
       });
     });
+    // $rootScope.$on('$stateChangeSuccess', function(event, next){
+    //   $rootScope.path = next.url;
+    // })
   });
 
 angular.element(document)

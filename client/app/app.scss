@@ -21,6 +21,8 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 /* inject:scss */
 @import 'admin-panel/admin-panel';
 @import 'admin/admin';
+@import 'components/sideNav/sideNav';
+@import 'dashboard/dashboard';
 @import 'forget/forget';
 @import 'loginroutes/loginroutes';
 @import 'main/main';

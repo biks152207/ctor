@@ -1,9 +1,10 @@
 <div class="container" style=" padding: 150px;position: fixed; -webkit-font-smoothing: antialiased;font: normal 14px Roboto,arial,sans-serif;">
     <div class="row">
         <div class="col-md-offset-5 col-md-3">
-          <form name="adminForm" novalidate="" ng-submit="vm.submit(adminForm)">
+          <form name="adminForm" novalidate="" ng-submit="vm.submit(adminForm,vm.formData)">
             <div class="form-login">
             <h4>Admin login</h4>
+            <div class="text-warning">{{vm.error}}</div>
             <input type="email" id="userName" name="email" class="form-control input-sm chat-input" placeholder="email" ng-model="vm.formData.email" required="" />
             <span class="text-danger" ng-messages="adminForm.email.$error" ng-if="adminForm.$submitted">
               <h6 ng-message="required">

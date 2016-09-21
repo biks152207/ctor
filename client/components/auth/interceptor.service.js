@@ -1,6 +1,6 @@
 'use strict';
 
-export function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
+export function authInterceptor($rootScope, $q, $cookies, $injector, Util, localStorageService) {
   'ngInject';
 
   var state;
@@ -8,8 +8,10 @@ export function authInterceptor($rootScope, $q, $cookies, $injector, Util) {
     // Add authorization token to headers
     request(config) {
       config.headers = config.headers || {};
-      if($cookies.get('token') && Util.isSameOrigin(config.url)) {
-        config.headers.Authorization = 'Bearer ' + $cookies.get('token');
+      if(($cookies.get('token') && Util.isSameOrigin(config.url)) || localStorageService.get('token')) {
+        var token = $cookies.get('token') ? $cookies.get('token') : localStorageService.get('token');
+        console.log(token);
+        config.headers.Authorization = 'Bearer ' + token
       }
       return config;
     },

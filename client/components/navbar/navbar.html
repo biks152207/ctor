@@ -187,7 +187,7 @@
 	</div>
 
 </script> -->
-<div ng-if="$ctrl.rootScope.path.url != '/admin-panel'">
+<div ng-if="$ctrl.rootScope.path.url != '/admin-panel' && $ctrl.rootScope.path.url.indexOf('/dashboard') =='-1'">
 
 <section class="top-main" ng-if="$ctrl.rootScope.path.url != '/login' && $ctrl.rootScope.path.url != '/forget' && $ctrl.rootScope.path.url.indexOf('/reset') == '-1'"  >
 	<header>
