@@ -24,11 +24,9 @@ export default class LoginController {
         password: this.user.password
       })
         .then(() => {
-          // Logged in, redirect to home
-          // this.uibModalInstance.dismiss();
+          this.$state.go('home.title')
         })
         .catch(err => {
-          console.log(err);
           this.errors.login = err.message;
         });
     }

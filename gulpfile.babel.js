@@ -369,7 +369,7 @@ gulp.task('serve:debug', cb => {
 
 gulp.task('serve:dist', cb => {
     runSequence(
-        'build',
+        // 'build',
         'env:all',
         'env:prod',
         ['start:server:prod', 'start:client'],
@@ -485,13 +485,13 @@ gulp.task('clean:dist', () => del([`${paths.dist}/!(.git*|.openshift|Procfile)**
 
 gulp.task('build:images', () => {
     return gulp.src(paths.client.images)
-        .pipe(plugins.imagemin([
-            plugins.imagemin.optipng({optimizationLevel: 5}),
-            plugins.imagemin.jpegtran({progressive: true}),
-            plugins.imagemin.gifsicle({interlaced: true}),
-            plugins.imagemin.svgo({plugins: [{removeViewBox: false}]})
-        ]))
-        .pipe(plugins.rev())
+        // .pipe(plugins.imagemin([
+        //     plugins.imagemin.optipng({optimizationLevel: 5}),
+        //     plugins.imagemin.jpegtran({progressive: true}),
+        //     plugins.imagemin.gifsicle({interlaced: true}),
+        //     plugins.imagemin.svgo({plugins: [{removeViewBox: false}]})
+        // ]))
+        // .pipe(plugins.rev())
         .pipe(gulp.dest(`${paths.dist}/${clientPath}/assets/images`))
         .pipe(plugins.rev.manifest(`${paths.dist}/${paths.client.revManifest}`, {
             base: `${paths.dist}/${clientPath}/assets`,

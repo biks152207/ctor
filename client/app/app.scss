@@ -21,9 +21,18 @@ $fa-font-path: '/assets/fonts/font-awesome/';
 /* inject:scss */
 @import 'admin-panel/admin-panel';
 @import 'admin/admin';
+@import 'chapter02-couple-definition/chapter02-couple-definition';
+@import 'chapter02-equivalent-system/chapter02-equivalent-system';
+@import 'chapter02-equivalent-usage/chapter02-equivalent-usage';
+@import 'chapter2-introduction/chapter2-introduction';
+@import 'chapter2-tooth-movement/chapter2-tooth-movement';
+@import 'common/common';
 @import 'components/sideNav/sideNav';
 @import 'dashboard/dashboard';
 @import 'forget/forget';
+@import 'home/home';
+@import 'home/title';
+@import 'leftNav/leftNav';
 @import 'loginroutes/loginroutes';
 @import 'main/main';
 @import 'mymodal/mymodal';

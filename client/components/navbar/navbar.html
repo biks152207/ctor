@@ -187,9 +187,9 @@
 	</div>
 
 </script> -->
-<div ng-if="$ctrl.rootScope.path.url != '/admin-panel' && $ctrl.rootScope.path.url.indexOf('/dashboard') =='-1'">
+<div ng-if="$ctrl.rootScope.path.url != '/admin-panel' && $ctrl.rootScope.path.url.indexOf('/dashboard') =='-1' &&  $ctrl.rootScope.path.url.indexOf('/home') !== '-1'">
 
-<section class="top-main" ng-if="$ctrl.rootScope.path.url != '/login' && $ctrl.rootScope.path.url != '/forget' && $ctrl.rootScope.path.url.indexOf('/reset') == '-1'"  >
+<section class="top-main" ng-if="$ctrl.rootScope.path.url != '/login' && $ctrl.rootScope.path.url != '/forget' && $ctrl.rootScope.path.url.indexOf('/reset') == '-1' && $ctrl.rootScope.path.url.indexOf('/home') == '-1'"  >
 	<header>
 		<div class="wrapper">
 			<div ui-sref="main"  class="logo"><img src="/assets/images/logo.png" alt=""></div>
@@ -199,7 +199,7 @@
 					<li><a href="#mechanotherapy">Mechanotherapy</a></li>
 					<li><a href="#news">News</a></li>
 					<li><a href="#contact">Contact</a></li>
-					<li ng-show="$ctrl.isLoggedIn()"><a href="#">Hello {{ $ctrl.getCurrentUser() }}</a></li>
+					<li ng-show="$ctrl.isLoggedIn()"><a href="#">Hello {{ $ctrl.getCurrentUser().name }}</a></li>
 					<li ng-show="$ctrl.isLoggedIn()"><a ui-sref="logout">Logout</a></li>
 				</ul>
 			</div>
@@ -222,7 +222,7 @@
 		</div>
 	</div>
 </section>
-<section class="top-main1" ng-if="$ctrl.rootScope.path.url == '/login' || $ctrl.rootScope.path.url == '/forget' || $ctrl.rootScope.path.url.indexOf('/reset') != '-1'" >
+<section class="top-main1" ng-if="$ctrl.rootScope.path.url == '/login' || $ctrl.rootScope.path.url == '/forget' || $ctrl.rootScope.path.url.indexOf('/reset') != '-1'">
 	<header>
 		<div class="wrapper">
 			<div ui-sref="main" style="cursor:pointer" class="logo"><img src="/assets/images/logo.png" alt=""></div>

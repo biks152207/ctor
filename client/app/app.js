@@ -40,13 +40,20 @@ import localStorage from 'angular-local-storage';
 import authenticate from './authenticity/authenticity.service';
 import sideNav from './components/sideNav/sideNav.directive';
 import thumbnail from './angular-thumbnail/angular-thumbnail.directive';
-
-
+import uploader from './components/uploader/uploader.service';
+import homeRoute from './home/home.component';
+import leftNav from './leftNav/leftNav.directive';
+import chapter2Introduction from './chapter2-introduction/chapter2-introduction.component';
+import chapter2ToothMovement from './chapter2-tooth-movement/chapter2-tooth-movement.component';
+import chapter2EquivalentSystem from './chapter02-equivalent-system/chapter02-equivalent-system.component';
+import chapter02EquivalentUsageComponent from './chapter02-equivalent-usage/chapter02-equivalent-usage.component'
+import chapter02CoupleDefinition from './chapter02-couple-definition/chapter02-couple-definition.component';
+import common from './common/common.directive';
 
 import './app.scss';
 
 angular.module('scApp', [ngCookies, ngResource, ngSanitize, uiRouter, uiBootstrap, _Auth, account,
-    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, forget, reset, adminPanel,dashboard, authenticate, localStorage, thumbnail, sideNav,require('ng-file-upload'), 'ui-notification', require('angular-validation-match')
+    admin, navbar, footer, main, constants, util, ngTouch, modalInstance, ngMessages, mongooseError, forget, reset, adminPanel, dashboard, leftNav, authenticate, localStorage, thumbnail, sideNav, uploader, homeRoute, chapter2Introduction, chapter2ToothMovement, chapter2EquivalentSystem, chapter02EquivalentUsageComponent,chapter02CoupleDefinition,common, require('ng-file-upload'), 'ui-notification', require('angular-validation-match')
   ])
   .config(routeConfig)
   .run(function($rootScope, $location, Auth) {
